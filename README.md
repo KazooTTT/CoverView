@@ -9,7 +9,7 @@ Creating cover images for your blogs is now super easy.
 
 </p>
 
-<img src="https://user-images.githubusercontent.com/47467468/175771056-bf7fa9a0-801b-4887-80b5-169735923d64.png" height="auto" width="800px"  margin="20px">
+<img src="https://user-images.githubusercontent.com/47467468/175771056-bf7fa9a0-801b-4887-80b5-169735923d64.png" height="auto" width="800px" margin="20px">
 
 ## ⚡ Features
 

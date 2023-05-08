@@ -1,8 +1,10 @@
 import React from "react";
 import "./RandomTheme.css";
-class RandomTheme extends React.Component {
+class RandomTheme extends React.Component<{
+  onThemeChange: (theme: ThemeItem, pattern: string) => void;
+}> {
   changeTheme = () => {
-    const colorThemes = [
+    const colorThemes: ThemeItem[] = [
       {
         bgColor: "#d972ff",
         bdColor: "#581b98",
@@ -125,7 +127,7 @@ class RandomTheme extends React.Component {
     return (
       <div className="flex flex-col justify-center">
         <div
-          className="shuffle-btn  w-10 flex justify-center items-center shadow-xl shadow-gray-100 h-10 p-2  bg-indigo-400  rounded-xl cursor-pointer"
+          className="shuffle-btn w-10 flex justify-center items-center shadow-xl shadow-gray-100 h-10 p-2 bg-indigo-400 rounded-xl cursor-pointer"
           onClick={this.changeTheme}
         >
           <svg

@@ -31,6 +31,7 @@ const defaultIcon = { label: "react", value: "react" };
 
 const defaultSettings = {
   title: "A begineers guide to frontend development",
+  borderColor: undefined,
   bgColor: "#949ee5",
   pattern: "",
   download: "PNG",
@@ -45,19 +46,14 @@ const defaultSettings = {
 
 const devIconsUrl =
   "https://raw.githubusercontent.com/devicons/devicon/master/devicon.json";
-// const devIconOptions = [
-// 	{ value: 'None', label: 'None' },
-// 	{ value: 'javascript', label: 'Javascript' },
-// 	{ value: 'python', label: 'Python' },
-// ]
 
-class Editor extends React.Component {
+class Editor extends React.Component<Record<string, never>, SettingsProps> {
   state = defaultSettings;
   componentDidMount() {
     console.log("Mount");
     fetch(devIconsUrl)
       .then((r) => r.json())
-      .then((data) => {
+      .then((data: IconItem[]) => {
         data.push({ name: "custom" });
 
         this.setState({
@@ -75,7 +71,7 @@ class Editor extends React.Component {
     });
   };
 
-  getRandomTheme = (theme, Pattern) => {
+  getRandomTheme = (theme: ThemeItem, Pattern: string) => {
     this.setState({
       bgColor: theme.bgColor,
       borderColor: theme.bdColor,
@@ -83,7 +79,7 @@ class Editor extends React.Component {
     });
   };
 
-  formatOptionLabel = ({ value, label }) => (
+  formatOptionLabel = ({ value, label }: { value: string; label: string }) => (
     <div className="flex">
       <span className="mr-2">{label}</span>
 
@@ -104,11 +100,11 @@ class Editor extends React.Component {
               <Tab.Group>
                 <div className="flex md:flex-row flex-col">
                   <Tab.List className=" bg-white md:p-0 p-2 flex flex-row md:flex-col">
-                    <Tab className="flex  items-center font-semibold  ">
+                    <Tab className="flex items-center font-semibold ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
-                        className="text-gray- bg-white rounded-xl w-12 m-2 h-12 p-2 rounded border"
+                        className="text-gray- bg-white w-12 m-2 h-12 p-2 rounded border"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
@@ -117,11 +113,11 @@ class Editor extends React.Component {
                       </svg>
                     </Tab>
 
-                    <Tab className="flex items-center   font-semibold    text-lg">
+                    <Tab className="flex items-center font-semibold text-lg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
-                        className=" text-gray-800 bg-white rounded-xl w-12 h-12 p-2 m-2 rounded border"
+                        className=" text-gray-800 bg-white w-12 h-12 p-2 m-2 rounded border"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"
@@ -139,7 +135,6 @@ class Editor extends React.Component {
                         <span className="font-medium pb-1">Blog Title</span>
 
                         <textarea
-                          type="text"
                           value={this.state.title}
                           placeholder="Enter title here"
                           className="focus:outline-none border text-gray-700 text-xl rounded p-2 h-24"
@@ -180,15 +175,17 @@ class Editor extends React.Component {
                       {this.state.icon.label === "custom" ? (
                         <div className="flex items-center justify-center m-2">
                           <input
+                            aria-label="custom-icon-upload"
                             type="file"
                             className="focus:outline-none text-lg cursor-pointer bg-white rounded border"
-                            onChange={(e) =>
+                            onChange={(e) => {
+                              if (e.target.files === null) return;
                               this.setState({
                                 customIcon: URL.createObjectURL(
                                   e.target.files[0]
                                 ),
-                              })
-                            }
+                              });
+                            }}
                           />
                         </div>
                       ) : (
@@ -200,6 +197,7 @@ class Editor extends React.Component {
                           <span className="font-medium pb-1">Font</span>
 
                           <select
+                            aria-label="font-select"
                             value={this.state.font}
                             onChange={(e) =>
                               this.setState({ font: e.target.value })
@@ -224,11 +222,12 @@ class Editor extends React.Component {
                           <span className="font-medium pb-1">Color</span>
 
                           <div className="border rounded flex items-center p-2">
-                            <span className="text-xl text-gray-700  mx-2">
+                            <span className="text-xl text-gray-700 mx-2">
                               {this.state.bgColor}
                             </span>
 
                             <input
+                              aria-label="color-input"
                               type="color"
                               value={this.state.bgColor}
                               onChange={(e) =>
@@ -241,39 +240,11 @@ class Editor extends React.Component {
                       </div>
 
                       <div className="flex items-center">
-                        {/* <div className="flex flex-col m-2 w-1/2">
-													<span className="font-medium pb-1">Pattern</span>
-													<select
-														onChange={(e) => this.setState({ pattern: e.target.value })}
-														className="focus:outline-none border text-xl p-2 rounded"
-														value={this.state.pattern}>
-
-														<option>none</option>
-														<option>graph-paper</option>
-														<option>jigsaw</option>
-														<option>hideout</option>
-														<option>dots</option>
-														<option>falling-triangles</option>
-														<option>circuit-board</option>
-														<option>temple</option>
-														<option>anchors</option>
-														<option>brickwall</option>
-														<option>overlapping-circles</option>
-														<option>wiggle</option>
-														<option>tic-tac-toe</option>
-														<option>leaf</option>
-														<option>bubbles</option>
-														<option>squares</option>
-														<option>explorer</option>
-														<option>jupiter</option>
-														<option>sun</option>
-													</select>
-												</div> */}
-
                         <div className="flex flex-col m-2 w-full">
                           <span className="font-medium pb-1">Platform</span>
 
                           <select
+                            aria-label="platform-select"
                             onChange={(e) =>
                               this.setState({ platform: e.target.value })
                             }
@@ -306,55 +277,53 @@ class Editor extends React.Component {
                         </div>
                       </div>
 
-                      <div className="p-4  flex flex-wrap  overflow-y-scroll ">
+                      <div className="p-4 flex flex-wrap overflow-y-scroll ">
                         <img
                           src={theme7}
                           alt="basic theme"
-                          onClick={(e) =>
-                            this.setState({ theme: "background" })
-                          }
+                          onClick={() => this.setState({ theme: "background" })}
                           className=" cursor-pointer border border-gray-100 hover:border-gray-200 hover:scale-105 duration-300 m-2"
                         />
 
                         <img
                           src={theme1}
                           alt="basic theme"
-                          onClick={(e) => this.setState({ theme: "basic" })}
+                          onClick={() => this.setState({ theme: "basic" })}
                           className=" cursor-pointer border-gray-100 hover:scale-105 duration-300 hover:border-gray-200 border m-2 "
                         />
 
                         <img
                           src={theme2}
                           alt="basic theme"
-                          onClick={(e) => this.setState({ theme: "modern" })}
+                          onClick={() => this.setState({ theme: "modern" })}
                           className="cursor-pointer border-gray-100 hover:scale-105 hover:border-gray-200 duration-300 border m-2 "
                         />
 
                         <img
                           src={theme3}
                           alt="basic theme"
-                          onClick={(e) => this.setState({ theme: "stylish" })}
+                          onClick={() => this.setState({ theme: "stylish" })}
                           className=" cursor-pointer border border-gray-100 hover:border-gray-200 hover:scale-105 duration-300 m-2"
                         />
 
                         <img
                           src={theme5}
                           alt="basic theme"
-                          onClick={(e) => this.setState({ theme: "outline" })}
+                          onClick={() => this.setState({ theme: "outline" })}
                           className=" cursor-pointer border border-gray-100 hover:border-gray-200 hover:scale-105 duration-300 m-2"
                         />
 
                         <img
                           src={theme4}
                           alt="basic theme"
-                          onClick={(e) => this.setState({ theme: "preview" })}
+                          onClick={() => this.setState({ theme: "preview" })}
                           className=" cursor-pointer border border-gray-100 hover:border-gray-200 hover:scale-105 duration-300 m-2"
                         />
 
                         <img
                           src={theme6}
                           alt="basic theme"
-                          onClick={(e) => this.setState({ theme: "mobile" })}
+                          onClick={() => this.setState({ theme: "mobile" })}
                           className=" cursor-pointer border border-gray-100 hover:border-gray-200 hover:scale-105 duration-300 m-2"
                         />
                       </div>
@@ -362,16 +331,6 @@ class Editor extends React.Component {
                   </Tab.Panels>
                 </div>
               </Tab.Group>
-
-              {/* <div className="mx-4 my-1">
-						<h6>Download As</h6>
-						<select onChange={(e) => this.setState({ download: e.target.value })}
-							className="form-control input"
-							value={this.state.download}>
-							<option>PNG</option>
-							<option>JPEG</option>
-						</select>
-					</div> */}
             </div>
 
             <div className=" flex m-6 flex-col items-center justify-center ">

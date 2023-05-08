@@ -8,7 +8,7 @@ const Header = () => {
   );
 
   return (
-    <div className="text-xl md:px-2 flex  border-b border-gray-100 p-2">
+    <div className="text-xl md:px-2 flex border-b border-gray-100 p-2">
       <Link to="/" className="flex items-center">
         <img src={logo} alt="logo" className="w-8 h-8 mx-4" />
 
@@ -26,7 +26,7 @@ const Header = () => {
         <a
           href="https://www.buymeacoffee.com/rutikwankhade"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer noopener"
           className="text-base mx-2 font-Nunito"
         >
           🥤 <span className="hidden md:inline-block">Buy me a coffee</span>

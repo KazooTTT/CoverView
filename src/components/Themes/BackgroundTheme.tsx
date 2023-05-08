@@ -1,30 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
 import unsplash from "../../utils/unsplashConfig";
 import { ImgContext } from "../../utils/ImgContext";
+import { Basic } from "unsplash-js/dist/methods/photos/types";
 
-const BackgroundTheme = ({ config }: any) => {
+const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
   const { title, author, font, icon, customIcon, platform, bgColor } = config;
 
   // const [image, setImage] = useState({})
 
-  const [imageList, setImageList] = useState([]);
-  const [searchText, setSearchText] = useState("dev");
+  const [imageList, setImageList] = useState<Basic[]>([]);
+  console.log("%c Line:12 🍋 imageList", "color:#6ec1c2", imageList);
+  const [searchText, setSearchText] = useState<string>("dev");
 
   const { unsplashImage, setUnsplashImage } = useContext(ImgContext);
 
-  const searchImages = () => {
+  const searchImages = (searchText: string) => {
     unsplash.search
       .getPhotos({
         query: searchText,
         page: 1,
-
-        per_page: 30,
+        perPage: 30,
         // orientation:'portrait'
       })
       .then((response) => {
-        // console.log(response.response.results);
-
-        setImageList(response.response.results);
+        setImageList(response?.response?.results ?? []);
       });
   };
 
@@ -33,17 +32,16 @@ const BackgroundTheme = ({ config }: any) => {
       .getPhotos({
         query: "setup",
         page: 1,
-
-        per_page: 30,
+        perPage: 30,
       })
       .then((response) => {
-        // console.log(response.response.results);
+        console.log(response?.response?.results);
 
-        setImageList(response.response.results);
+        setImageList(response?.response?.results ?? []);
       });
   }, []);
 
-  const selectImage = (image: any) => {
+  const selectImage = (image: Basic) => {
     setUnsplashImage({
       url: image.urls.regular,
       name: image.user.name,
@@ -53,7 +51,7 @@ const BackgroundTheme = ({ config }: any) => {
     });
   };
 
-  const handleSearchSubmit = (e: any) => {
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     searchImages(searchText);
@@ -62,25 +60,34 @@ const BackgroundTheme = ({ config }: any) => {
   return (
     <div className=" bg-white rounded">
       <div
-        className={` overflow-y-hidden flex flex-col rounded ${platform}`}
+        className={`overflow-y-hidden flex flex-col rounded ${platform}`}
         style={{ backgroundColor: bgColor }}
       >
-        <div className="flex flex-row  items-center bg-white  justify-center  ">
+        <div className="flex flex-row items-center bg-white justify-center ">
           <div className="w-full">
-            {unsplashImage ? (
+            {unsplashImage?.url ? (
               <div className="relative flex group">
                 <div className="h-max w-full ">
                   <img
                     src={unsplashImage.url && unsplashImage.url}
-                    className=" object-cover h-full w-full  "
+                    className=" object-cover h-full w-full "
                     alt="preview"
                   />
                 </div>
 
-                <div className=" backdrop-blur-sm h-full bg-gray-800/60 absolute top-0 right-0 left-0 ">
+                <div className="backdrop-blur-sm h-full bg-gray-800/60 absolute top-0 right-0 left-0 ">
                   <button
-                    onClick={() => setUnsplashImage("")}
-                    className="absolute  top-2 right-2 cursor-pointer"
+                    title="remove image"
+                    onClick={() =>
+                      setUnsplashImage({
+                        url: "",
+                        name: "",
+                        avatar: "",
+                        profile: "",
+                        downloadLink: "",
+                      })
+                    }
+                    className="absolute top-2 right-2 cursor-pointer"
                   >
                     <svg
                       className="group-hover:inline-block hidden w-8 h-8 text-gray-800 bg-white p-2 rounded-full z-10"
@@ -99,13 +106,13 @@ const BackgroundTheme = ({ config }: any) => {
                   </button>
 
                   <div
-                    className={`${font} px-10 pt-32  text-left rounded-xl h-full p-4 flex flex-col`}
+                    className={`${font} px-10 pt-32 text-left rounded-xl h-full p-4 flex flex-col`}
                   >
                     <h1 className=" md:text-5xl text-center text-2xl font-bold text-white">
                       {title}
                     </h1>
-                    <div className="flex flex-col items-center py-10  ">
-                      <h2 className="text-xl  font-semibold text-left text-white ">
+                    <div className="flex flex-col items-center py-10 ">
+                      <h2 className="text-xl font-semibold text-left text-white ">
                         {author}
                       </h2>
                       {customIcon ? (
@@ -127,13 +134,13 @@ const BackgroundTheme = ({ config }: any) => {
                   </div>
                 </div>
 
-                <div className="absolute  bottom-4 right-4 opacity-80">
+                <div className="absolute bottom-4 right-4 opacity-80">
                   <div className=" group-hover:flex hidden items-center">
                     <span className="text-sm text-white mx-2">Photo by</span>
                     <a
                       href={unsplashImage.profile}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noreferrer noopener"
                       className="cursor-pointer flex items-center bg-gray-300 rounded-full text-sm"
                     >
                       <img
@@ -155,7 +162,7 @@ const BackgroundTheme = ({ config }: any) => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col p-2  bg-white items-center justify-center">
+              <div className="flex flex-col p-2 bg-white items-center justify-center">
                 <div className="flex items-center w-full px-6 ">
                   <div className="text-lg font-semibold text-gray-700">
                     Click on any image to select
@@ -168,11 +175,12 @@ const BackgroundTheme = ({ config }: any) => {
                       type="text"
                       value={searchText}
                       placeholder="Search image"
-                      className="focus:outline-none w-full text-lg bg-gray-50  p-1 px-4  rounded-full border border-gray-50"
+                      className="focus:outline-none w-full text-lg bg-gray-50 p-1 px-4 rounded-full border border-gray-50"
                       onChange={(e) => setSearchText(e.target.value)}
                     />
 
                     <button
+                      title="search image"
                       type="submit"
                       onClick={() => searchImages(searchText)}
                     >
@@ -200,7 +208,7 @@ const BackgroundTheme = ({ config }: any) => {
                       <img
                         src={image.urls.regular}
                         key={image.id}
-                        alt={image.alt_description}
+                        alt={image.alt_description ?? ""}
                         className="rounded m-2 cursor-pointer w-5/12 object-cover h-40"
                         onClick={() => selectImage(image)}
                       />

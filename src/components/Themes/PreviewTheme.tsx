@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-const PreviewTheme = ({ config }: any) => {
+const PreviewTheme = ({ config }: { config: SettingsProps }) => {
   const { bgColor, platform, title, font } = config;
 
-  const [image, setImage] = useState();
+  const [image, setImage] = useState<string>("");
 
   return (
     <div className="p-4 bg-white">
@@ -17,12 +17,13 @@ const PreviewTheme = ({ config }: any) => {
           {title}
         </h1>
 
-        <div className="w-10/12 group mx-auto mt-auto mb-0 shadow-lg  flex flex-col bg-white rounded-t-xl border-white">
+        <div className="w-10/12 group mx-auto mt-auto mb-0 shadow-lg flex flex-col bg-white rounded-t-xl border-white">
           <div className="bg-gray-800 h-8 w-full p-2 flex items-center rounded-t-xl">
             <div className="bg-red-400 h-3 w-3 rounded-full mx-1"></div>
             <div className="bg-yellow-400 h-3 w-3 rounded-full mx-1"></div>
             <div className="bg-green-400 h-3 w-3 rounded-full mx-1"></div>
             <button
+              title="remove image"
               onClick={() => setImage("")}
               className="ml-auto mr-4 cursor-pointer"
             >
@@ -54,11 +55,15 @@ const PreviewTheme = ({ config }: any) => {
           ) : (
             <div className="flex flex-col p-20 py-28 bg-white items-center justify-center">
               <input
+                placeholder="upload image"
                 type="file"
                 className="text-xl cursor-pointer mb-2 bg-white rounded border"
-                onChange={(e) =>
-                  setImage(URL.createObjectURL(e.target.files[0]))
-                }
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    setImage(URL.createObjectURL(file));
+                  }
+                }}
               />
               <span className=" text-center italic">
                 click to upload a screenshot

@@ -1,9 +1,24 @@
-import React, { createContext, useState } from "react";
+import React, { ReactNode, createContext, useState } from "react";
 
-const ImgContext = createContext();
+interface UnsplashImageProps {
+  url: string;
+  name: string;
+  avatar: string;
+  profile: string;
+  downloadLink: string;
+}
 
-const ImgProvider = ({ children }: any) => {
-  const [unsplashImage, setUnsplashImage] = useState();
+interface ImgContextProps {
+  unsplashImage: UnsplashImageProps;
+  setUnsplashImage: (newValue: UnsplashImageProps) => void;
+}
+
+const ImgContext = createContext<ImgContextProps>({} as ImgContextProps);
+
+const ImgProvider = ({ children }: { children: ReactNode }) => {
+  const [unsplashImage, setUnsplashImage] = useState<UnsplashImageProps>(
+    {} as UnsplashImageProps
+  );
 
   return (
     <ImgContext.Provider value={{ unsplashImage, setUnsplashImage }}>

@@ -9,7 +9,7 @@ const Faq = () => {
       <Header />
 
       <div className=" md:w-10/12 mx-auto md:p-20 p-4">
-        <h1 className="font-bold md:text-4xl  text-2xl font-Anek text-center">
+        <h1 className="font-bold md:text-4xl text-2xl font-Anek text-center">
           Frequently asked questions
         </h1>
 
@@ -30,7 +30,7 @@ const Faq = () => {
           </div>
 
           <div className="md:w-5/12 m-4">
-            <p className="text-xl  font-bold py-2">
+            <p className="text-xl font-bold py-2">
               Can I upload my custom brand logo?
             </p>
             <p className="text-lg text-gray-700">
@@ -44,7 +44,7 @@ const Faq = () => {
                 href="https://twitter.com/WankhadeRutik/status/1518270774335111168?s=20&t=XMjbJpGAC7anadJ690_DUg"
                 className="text-blue-400"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
               >
                 example
               </a>
@@ -65,8 +65,8 @@ const Faq = () => {
           <div className="md:w-5/12 m-4">
             <p className="text-xl font-bold my-2">Why use Coverview?</p>
             <p className="text-lg text-gray-700">
-              Because it's simple, quick and easy to use. Why spend hours
-              designing when you can create cover images in seconds?
+              {`Because it's simple, quick and easy to use. Why spend hours
+       designing when you can create cover images in seconds?`}
             </p>
           </div>
 
@@ -80,7 +80,7 @@ const Faq = () => {
               <a
                 href="https://github.com/sponsors/rutikwankhade"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="font-semibold hover:underline"
               >
                 sponsor me on Github
@@ -89,7 +89,7 @@ const Faq = () => {
               <a
                 href="https://www.buymeacoffee.com/rutikwankhade"
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 className="hover:underline text-pink-400 font-semibold"
               >
                 buy me a coffee

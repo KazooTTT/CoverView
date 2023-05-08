@@ -23,7 +23,7 @@ import WallOfLove from "./walloflove";
 const Home = () => {
   return (
     <div className="bg-gray-50">
-      <div className="text-xl  flex border-b border-gray-100  p-2 md:w-10/12 mx-auto">
+      <div className="text-xl flex border-b border-gray-100 p-2 md:w-10/12 mx-auto">
         <div className="flex items-center">
           <img src={logo} alt="logo" className="w-8 h-8 mx-2" />
           <h1 className="font-semibold md:text-xl text-lg font-Inter">
@@ -41,7 +41,7 @@ const Home = () => {
         </a>
       </div>
 
-      <div className="  mx-auto md:px-20 py-6   flex flex-col items-center">
+      <div className=" mx-auto md:px-20 py-6  flex flex-col items-center">
         <h1 className="md:w-7/12 m-10 text-center md:text-5xl text-3xl font-extrabold text-gray-700 font-Anek">
           Creating cover images for your blogs is now super easy
         </h1>
@@ -54,7 +54,7 @@ const Home = () => {
       </div>
 
       <div className=" temple flex flex-row items-center justify-center mx-auto md:w-10/12">
-        <div className="m-4 transform -translate-y-20 border animate hover:scale-105 hover:-rotate-3  rotate-6 duration-100 bg-white p-2 shadow-sm w-1/5 rounded-lg flex flex-col ">
+        <div className="m-4 transform -translate-y-20 border animate hover:scale-105 hover:-rotate-3 rotate-6 duration-100 bg-white p-2 shadow-sm w-1/5 rounded-lg flex flex-col ">
           <img
             src={cover2}
             className="border border-gray-100 rounded mb-2"
@@ -64,7 +64,7 @@ const Home = () => {
           <p className="animate animate-pulse w-8/12 bg-gray-50 md:h-5 h-2 rounded mb-2"></p>
         </div>
 
-        <div className="m-4 transform hover:scale-105 hover:rotate-3 -rotate-2  duration-300 bg-white p-4 shadow-sm w-1/3 rounded-lg flex flex-col ">
+        <div className="m-4 transform hover:scale-105 hover:rotate-3 -rotate-2 duration-300 bg-white p-4 shadow-sm w-1/3 rounded-lg flex flex-col ">
           <img
             src={cover1}
             className="rounded border border-gray-100 mb-2"
@@ -85,7 +85,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="md:my-32  my-10 mx-auto">
+      <div className="md:my-32 my-10 mx-auto">
         <div className="md:w-10/12 mx-auto flex flex-col ">
           <div className="md:w-9/12 text-center mx-auto ">
             <h2 className="text-5xl py-4 font-bold font-Anek text-gray-700">
@@ -94,7 +94,7 @@ const Home = () => {
           </div>
 
           <div className="flex md:flex-row flex-col justify-center my-10 mx-auto">
-            <div className="m-10 p-10 bg-white rounded-xl shadow-xl shadow-gray-100 flex flex-col  md:w-4/12 ">
+            <div className="m-10 p-10 bg-white rounded-xl shadow-xl shadow-gray-100 flex flex-col md:w-4/12 ">
               <div className=" my-2 bg-purple-300 h-24 w-24 p-4 flex justify-center items-center rounded-full">
                 <svg
                   className="text-white w-20 h-20"
@@ -118,7 +118,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="m-10 p-10 bg-white rounded-xl shadow-xl shadow-gray-100 flex  flex-col  md:w-4/12 ">
+            <div className="m-10 p-10 bg-white rounded-xl shadow-xl shadow-gray-100 flex flex-col md:w-4/12 ">
               <div className=" my-2 bg-green-300 h-24 w-24 p-4 flex justify-center items-center rounded-full">
                 <svg
                   className="text-white w-20 h-20"
@@ -188,7 +188,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="md:w-8/12  flex md:flex-row flex-col justify-center items-center mx-auto">
+        <div className="md:w-8/12 flex md:flex-row flex-col justify-center items-center mx-auto">
           <div className="text-center md:w-1/3 m-4">
             <div className="text-xl mx-auto w-10 h-10 p-2 font-bold text-white bg-gray-700 rounded-full flex items-center justify-center">
               3
@@ -212,7 +212,7 @@ const Home = () => {
               <img
                 src={cover2}
                 alt="preview"
-                className="hover:scale-105 duration-300  m-2 rounded-lg shadow-sm"
+                className="hover:scale-105 duration-300 m-2 rounded-lg shadow-sm"
               />
             </div>
 
@@ -220,12 +220,12 @@ const Home = () => {
               <img
                 src={cover3}
                 alt="preview"
-                className="hover:scale-105 duration-300   m-2 rounded-lg shadow-sm"
+                className="hover:scale-105 duration-300  m-2 rounded-lg shadow-sm"
               />
               <img
                 src={cover4}
                 alt="preview"
-                className="hover:scale-105 duration-300  m-2 rounded-lg shadow-sm"
+                className="hover:scale-105 duration-300 m-2 rounded-lg shadow-sm"
               />
             </div>
           </div>
@@ -254,8 +254,8 @@ const Home = () => {
             cover images.
           </p>
           <Link to="/editor">
-            <button className="flex mx-auto my-4 hover:translate-x-2 duration-300 bg-gray-700  rounded-full px-6 text-white text-xl font-Inter font-semibold p-4">
-              It's Free! Try now &rarr;
+            <button className="flex mx-auto my-4 hover:translate-x-2 duration-300 bg-gray-700 rounded-full px-6 text-white text-xl font-Inter font-semibold p-4">
+              {`It's Free! Try now `}&rarr;
             </button>
           </Link>
         </div>
@@ -288,7 +288,7 @@ const Home = () => {
           </span>
         </div>
 
-        <div className="md:text-lg text-sm flex flex-wrap  ">
+        <div className="md:text-lg text-sm flex flex-wrap ">
           <Link to="/faq" className="m-2 hover:font-semibold">
             📌 How to use
           </Link>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 // import { exportComponentAsPNG } from "react-component-export-image";
 import "./CoverImage.css";
 
@@ -7,14 +7,16 @@ import unsplash from "../utils/unsplashConfig";
 
 import domtoimage from "dom-to-image";
 
-const ComponentToImg = (props: any) => {
+const ComponentToImg: FC<{
+  downloadAs: string;
+}> = (props) => {
   const [loading, setLoading] = useState(false);
 
   const { unsplashImage } = useContext(ImgContext);
-  const componentRef = React.createRef();
+  const componentRef = React.createRef<HTMLDivElement>();
 
-  async function saveImage(data) {
-    var a = document.createElement("A");
+  async function saveImage(data: string) {
+    const a = document.createElement("A") as HTMLAnchorElement;
 
     a.href = data;
 
@@ -34,23 +36,23 @@ const ComponentToImg = (props: any) => {
 
     // console.log(element)
     // console.log(element.offsetHeight)
+    if (element) {
+      const data = await domtoimage.toPng(componentRef.current, {
+        height: element.offsetHeight * 2,
 
-    let data = await domtoimage.toPng(componentRef.current, {
-      height: element.offsetHeight * 2,
+        width: element.offsetWidth * 2,
+        style: {
+          transform: "scale(" + 2 + ")",
+          transformOrigin: "top left",
 
-      width: element.offsetWidth * 2,
-      style: {
-        transform: "scale(" + 2 + ")",
-        transformOrigin: "top left",
+          width: element.offsetWidth + "px",
 
-        width: element.offsetWidth + "px",
-
-        height: element.offsetHeight + "px",
-      },
-    });
-
-    // console.log(data)
-    await saveImage(data);
+          height: element.offsetHeight + "px",
+        },
+      });
+      // console.log(data)
+      await saveImage(data);
+    }
 
     if (unsplashImage) {
       unsplash.photos.trackDownload({
