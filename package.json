@@ -18,13 +18,13 @@
     "unsplash-js": "^7.0.15"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "npm run start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "dev": "npm run start",
     "eject": "react-scripts eject",
+    "eslint": "eslint --fix .",
     "prettier": "npx prettier --write .",
-    "eslint": "eslint --fix ."
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
