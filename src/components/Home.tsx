@@ -34,7 +34,7 @@ const Home = () => {
         <a
           href="https://github.com/rutikwankhade/CoverView"
           target="_blank"
-          rel="noreferrer"
+          rel="noreferrer noopener"
           className="hover:translate-x-2 duration-300 bg-gray-700 group rounded-xl md:px-4 text-white md:text-sm text-xs ml-auto mr-4 font-Inter font-semibold p-2"
         >
           <span className="text-sm">⭐ Star on Github</span>
@@ -93,7 +93,7 @@ const Home = () => {
             </h2>
           </div>
 
-          <div className="flex md:flex-row flex-col mx-auto justify-center my-10 mx-auto">
+          <div className="flex md:flex-row flex-col justify-center my-10 mx-auto">
             <div className="m-10 p-10 bg-white rounded-xl shadow-xl shadow-gray-100 flex flex-col  md:w-4/12 ">
               <div className=" my-2 bg-purple-300 h-24 w-24 p-4 flex justify-center items-center rounded-full">
                 <svg
@@ -269,7 +269,7 @@ const Home = () => {
               href="https://twitter.com/WankhadeRutik"
               className="font-semibold"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
             >
               Rutik Wankhade
             </a>
@@ -279,7 +279,7 @@ const Home = () => {
             <a
               href="https://rutikwankhade.dev"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               className="text-purple-400 hover:text-pink-400"
             >
               more cool stuff
@@ -295,7 +295,7 @@ const Home = () => {
           <a
             href="https://github.com/rutikwankhade/CoverView"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
             className="m-2 hover:font-semibold"
           >
             ⭐ Star on Github
@@ -303,7 +303,7 @@ const Home = () => {
           <a
             href="https://www.buymeacoffee.com/rutikwankhade"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
             className="m-2 hover:font-semibold"
           >
             🥤 Buy me a coffee
