@@ -41,7 +41,7 @@ const defaultSettings = {
   font: "font-Anek",
   theme: "background",
   customIcon: "",
-  platform: "hashnode",
+  platform: "bilibili",
 };
 
 const devIconsUrl =
@@ -251,6 +251,8 @@ class Editor extends React.Component<Record<string, never>, SettingsProps> {
                             value={this.state.platform}
                             className="focus:outline-none text-gray-700 text-xl p-2 rounded border"
                           >
+                            <option>bilibili</option>
+
                             <option>hashnode</option>
 
                             <option>dev</option>
