@@ -1,5 +1,4 @@
 import React, { FC, useContext, useState } from "react";
-// import { exportComponentAsPNG } from "react-component-export-image";
 import "./CoverImage.css";
 
 import { ImgContext } from "../utils/ImgContext";
