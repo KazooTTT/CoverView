@@ -58,7 +58,7 @@ const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
   };
 
   return (
-    <div className=" bg-white rounded">
+    <div className="bg-white rounded">
       <div
         className={`overflow-y-hidden flex flex-col rounded ${platform}`}
         style={{ backgroundColor: bgColor }}
@@ -70,7 +70,7 @@ const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
                 <div className="h-max w-full ">
                   <img
                     src={unsplashImage.url && unsplashImage.url}
-                    className=" object-cover h-full w-full "
+                    className="object-cover h-full w-full "
                     alt="preview"
                   />
                 </div>
@@ -108,7 +108,7 @@ const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
                   <div
                     className={`${font} px-10 pt-32 text-left rounded-xl h-full p-4 flex flex-col`}
                   >
-                    <h1 className=" md:text-5xl text-center text-2xl font-bold text-white">
+                    <h1 className="md:text-5xl text-center text-2xl font-bold text-white">
                       {title}
                     </h1>
                     <div className="flex flex-col items-center py-10 ">
@@ -116,7 +116,7 @@ const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
                         {author}
                       </h2>
                       {customIcon ? (
-                        <div className=" ">
+                        <div className="">
                           <img
                             src={customIcon}
                             alt="img"
@@ -135,7 +135,7 @@ const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
                 </div>
 
                 <div className="absolute bottom-4 right-4 opacity-80">
-                  <div className=" group-hover:flex hidden items-center">
+                  <div className="group-hover:flex hidden items-center">
                     <span className="text-sm text-white mx-2">Photo by</span>
                     <a
                       href={unsplashImage.profile}
@@ -169,7 +169,7 @@ const BackgroundTheme = ({ config }: { config: SettingsProps }) => {
                   </div>
                   <form
                     onSubmit={(e) => handleSearchSubmit(e)}
-                    className=" ml-auto mr-2 w-1/2 flex bg-gray-50 rounded-full border mb-2"
+                    className="ml-auto mr-2 w-1/2 flex bg-gray-50 rounded-full border mb-2"
                   >
                     <input
                       type="text"

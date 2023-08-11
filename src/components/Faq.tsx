@@ -8,7 +8,7 @@ const Faq = () => {
     <div>
       <Header />
 
-      <div className=" md:w-10/12 mx-auto md:p-20 p-4">
+      <div className="md:w-10/12 mx-auto md:p-20 p-4">
         <h1 className="font-bold md:text-4xl text-2xl font-Anek text-center">
           Frequently asked questions
         </h1>
@@ -66,7 +66,7 @@ const Faq = () => {
             <p className="text-xl font-bold my-2">Why use Coverview?</p>
             <p className="text-lg text-gray-700">
               {`Because it's simple, quick and easy to use. Why spend hours
-       designing when you can create cover images in seconds?`}
+    designing when you can create cover images in seconds?`}
             </p>
           </div>
 

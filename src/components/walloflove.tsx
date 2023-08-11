@@ -10,8 +10,8 @@ const WallOfLove = () => {
     );
 
     // window.iFrameResize(
-    //   { log: false, checkOrigin: false },
-    //   '#senja-frame-902012ea');
+    //  { log: false, checkOrigin: false },
+    //  '#senja-frame-902012ea');
 
     const frame = document.getElementById("senja-frame-902012ea");
 

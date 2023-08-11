@@ -65,7 +65,7 @@ const MobileMockupTheme = ({ config }: { config: SettingsProps }) => {
                   }
                 }}
               />
-              <span className=" text-center italic">
+              <span className="text-center italic">
                 click to upload a screenshot
               </span>
             </div>

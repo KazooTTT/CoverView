@@ -10,7 +10,7 @@ const OutlineTheme = ({ config }: { config: SettingsProps }) => {
       >
         <div className={`${font} rounded-2xl py-6 flex flex-col `}>
           {customIcon ? (
-            <div className=" m-6">
+            <div className="m-6">
               <img
                 src={customIcon}
                 alt="img"
@@ -18,7 +18,7 @@ const OutlineTheme = ({ config }: { config: SettingsProps }) => {
               />
             </div>
           ) : (
-            <div className=" mr-auto ml-2 items-center justify-center flex">
+            <div className="mr-auto ml-2 items-center justify-center flex">
               <i
                 className={`devicon-${icon.value}-plain text-white p-4 dev-icon text-8xl`}
               ></i>

@@ -21,7 +21,7 @@ const BasicTheme = ({ config }: { config: SettingsProps }) => {
             </div>
           </div>
 
-          <div className=" flex mx-4 p-4 rounded-xl items-center bg-white">
+          <div className="flex mx-4 p-4 rounded-xl items-center bg-white">
             {customIcon ? (
               <div className="w-12 h-12 ">
                 <img

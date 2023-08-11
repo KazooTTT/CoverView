@@ -6,13 +6,13 @@ const ModernTheme = ({ config }: { config: SettingsProps }) => {
 
   return (
     <div className="w-full p-4 bg-white ">
-      <div className=" overflow-y-hidden w-full flex items-center">
+      <div className="overflow-y-hidden w-full flex items-center">
         <div
           className={`h-full w-full rounded-xl p-4 text-gray-800 flex items-center ${pattern} ${platform}`}
           style={{ backgroundColor: bgColor }}
         >
           {customIcon ? (
-            <div className=" mx-auto items-center justify-center flex">
+            <div className="mx-auto items-center justify-center flex">
               <img
                 src={customIcon}
                 alt="img"
@@ -20,7 +20,7 @@ const ModernTheme = ({ config }: { config: SettingsProps }) => {
               />
             </div>
           ) : (
-            <div className=" rounded-full p-6 w-32 h-32 bg-white mx-auto items-center justify-center flex">
+            <div className="rounded-full p-6 w-32 h-32 bg-white mx-auto items-center justify-center flex">
               <i
                 className={`devicon-${icon.value}-plain p-4 dev-icon text-7xl`}
               ></i>
